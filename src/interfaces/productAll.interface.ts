@@ -1,8 +1,6 @@
-interface IProductAll {
+export default interface IProductAll {
   id?: number,
   name: string,
   amount: string,
-  orderId: number | null,
+  orderId?: number | null,
 }
-
-export default IProductAll;

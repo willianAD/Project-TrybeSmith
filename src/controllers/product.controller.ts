@@ -11,10 +11,14 @@ export default class ProductController {
   public create = async (req: Request, res: Response) => {
     const product = req.body;
 
-    console.log(this.service);
-
     const newProduct = await this.service.create(product);
 
     return res.status(201).json(newProduct);
+  };
+
+  public getAll = async (req: Request, res: Response) => {
+    const allProducts = await this.service.getAll();
+
+    return res.status(200).json(allProducts);
   };
 }

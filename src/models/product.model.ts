@@ -1,6 +1,6 @@
-import { ResultSetHeader, Pool } from 'mysql2/promise';
+import { ResultSetHeader, RowDataPacket, Pool } from 'mysql2/promise';
 import IProduct from '../interfaces/product.interface';
-// import IProductAll from '../interfaces/productAll.interface';
+import IProductAll from '../interfaces/productAll.interface';
 
 export default class ProductModel {
   public connection;
@@ -16,11 +16,11 @@ export default class ProductModel {
     return { id: insertId, name, amount };
   };
 
-  //   public async getAll(): Promise<IProductAll[]> {
-  //     const query = 'SELECT * FROM Trybesmith.products';
-  //     const [result] = await this.connection.execute<RowDataPacket[] & IProduct[]>(query);
-  //     return result;
-  //   }
+  public getAll = async (): Promise<IProductAll[]> => {
+    const query = 'SELECT * FROM Trybesmith.products';
+    const [result] = await this.connection.execute<RowDataPacket[] & IProduct[]>(query);
+    return result;
+  };
 
 //   public async getById(id: number): Promise<IProduct> {
 //     const query = 'SELECT * FROM Trybesmith.products WHERE id = ?';
