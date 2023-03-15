@@ -4,11 +4,11 @@ import Joi from 'joi';
 export default async (req: Request, res: Response, next: NextFunction) => {
   const product = req.body;
 
-  const require = Joi.object({ name: Joi.required(), amaunt: Joi.required() }).validate(product);
+  const require = Joi.object({ name: Joi.required(), amount: Joi.required() }).validate(product);
 
   const stringLength = Joi.object({
     name: Joi.string().min(3),
-    amaunt: Joi.string().min(3),
+    amount: Joi.string().min(3),
   }).validate(product);
 
   if (require.error) {
