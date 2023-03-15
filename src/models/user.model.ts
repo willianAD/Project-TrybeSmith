@@ -1,7 +1,8 @@
-import { ResultSetHeader, Pool } from 'mysql2/promise';
+import { ResultSetHeader, Pool, RowDataPacket } from 'mysql2/promise';
 import IUser from '../interfaces/user.interface';
+import ILogin from '../interfaces/login.interface';
 
-export default class ProductModel {
+export default class UserModel {
   public connection;
 
   constructor(connection: Pool) {
@@ -19,15 +20,14 @@ export default class ProductModel {
     return insertId;
   };
 
-  // public getAll = async (): Promise<IProductAll[]> => {
-  //   const query = 'SELECT * FROM Trybesmith.products';
-  //   const [result] = await this.connection.execute<RowDataPacket[] & IProduct[]>(query);
-  //   return result;
-  // };
-
-//   public async getById(id: number): Promise<IProduct> {
-//     const query = 'SELECT * FROM Trybesmith.products WHERE id = ?';
-//     const [[result]] = await this.connection.execute<RowDataPacket[] & IProduct[]>(query, [id]);
-//     return result;
-//   }
+  public login = async (user: ILogin): Promise<ILogin> => {
+    const { username, password } = user;
+    const query = `SELECT id, username FROM Trybesmith.users
+      WHERE username = ? AND password = ?`;
+    const [[result]] = await this.connection.execute<RowDataPacket[] & ILogin[]>(
+      query,
+      [username, password],
+    );
+    return result;
+  };
 }
