@@ -15,7 +15,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     return res.status(400).json({ message: require.error.message });
   }
 
-  if (stringLength) {
+  if (stringLength.error) {
     return res.status(422).json({ message: stringLength.error?.message });
   }
 
