@@ -1,4 +1,4 @@
-import { RowDataPacket, Pool } from 'mysql2/promise';
+import { ResultSetHeader, RowDataPacket, Pool } from 'mysql2/promise';
 import IOrder from '../interfaces/order.interface';
 
 export default class OrderModel {
@@ -16,5 +16,11 @@ export default class OrderModel {
       GROUP BY o.id`;
     const [result] = await this.connection.execute<RowDataPacket[] & IOrder[]>(query);
     return result;
+  };
+
+  public create = async (userId: number): Promise<number> => {
+    const query = 'INSERT INTO Trybesmith.orders (user_id) VALUES (?)';
+    const [{ insertId }] = await this.connection.execute<ResultSetHeader>(query, [userId]);
+    return insertId;
   };
 }
