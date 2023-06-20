@@ -17,7 +17,7 @@ Construir uma API Node Express utilizando o Typescript.
 
 ## Requisitos
 
-<img src="">
+<img src="https://raw.githubusercontent.com/willianAD/Project-TrybeSmith/main/image/Projeto%20Trybesmith.png">
 
 # Requisitos Obrigatórios
 
@@ -130,10 +130,6 @@ Construir uma API Node Express utilizando o Typescript.
 - O endpoint deve ser acessível através do caminho (`/orders`).
 - Essa rota deve retornar todos os pedidos e os `id`s dos produtos associados a estes.
 
-✨ **Dica:** Todos os produtos são itens artesanais, portanto, únicos. Por isso são os produtos que contêm os `id`s dos pedidos.
-
-✨ **Dica:** Pesquise na documentação oficial do **MySQL** sobre a função de agregação `JSON_ARRAYAGG`, ela pode ser bem útil. 😉
-
 <details close>
   <summary>Além disso, as seguintes verificações serão feitas:</summary>
 
@@ -176,8 +172,6 @@ Construir uma API Node Express utilizando o Typescript.
     "password": "string"
   }
 ```
-
-**⚠️ Na configuração do `JWT` não use variáveis de ambientes para não ter conflito com o avaliador.**
 
 <details close>
  <summary>Além disso, as seguintes verificações serão feitas:</summary>
@@ -400,8 +394,6 @@ Construir uma API Node Express utilizando o Typescript.
     "productsIds": [1, 2]
   }
 ```
-
-**⚠️ Ao cadastrar um pedido, lembre-se de atualizar os respectivos produtos no banco de dados, incluindo neles o número do pedido criado.**
 
 <details close>
   <summary>Além disso, as seguintes verificações serão feitas:</summary>
